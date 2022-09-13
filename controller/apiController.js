@@ -4,13 +4,15 @@ const UserModel = require("../model/apiUserModel");
 const jwt = require("jsonwebtoken");
 
 exports.index=(req,res)=>{
-  ProductModel.find = (err, data) => {
+  UserModel.find = (err, data) => {
     if (!err) {
       res.status(200).json({
         status: "success",
         data: data,
         message: "exceuted successfully",
       });
+    } else{
+      console.log(err);
     }
   };
 }
