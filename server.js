@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 const userAuth=require('./middleware/userAuth')
 const app = express();
 const path=require('path')
+const cors=require('cors')
+
+app.use(cors())
+
 app.use(express.urlencoded({
     extended: true
 }));
