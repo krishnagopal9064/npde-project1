@@ -4,6 +4,7 @@ const userAuth=require('./middleware/userAuth')
 const app = express();
 const path=require('path')
 const cors=require('cors')
+require('dotenv').config()
 
 app.use(cors())
 
@@ -12,13 +13,19 @@ app.use(express.urlencoded({
 }));
 
 app.use(userAuth.authJwt)
+app.use((req,res,next)=>{
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE')
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    next()
+})
 
 const apiRoute=require('./routes/apiRoute')
 app.use(apiRoute)
 const dbDriver="mongodb+srv://krishnagopali9064:u2ELxozp7Dlv2p80@cluster0.mgujx.mongodb.net/node-project1"
 port = process.env.PORT || 1087;
 
-mongoose.connect(dbDriver, {
+mongoose.connect(process.env.dbDriver, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(res => {
