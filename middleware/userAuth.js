@@ -35,7 +35,7 @@ exports.checkDuplicateEntries = (req, res, next) => {
 const jwt = require("jsonwebtoken");
 exports.authJwt = (req, res, next) => {
     if (req.cookies && req.cookies.userToken) {
-        jwt.verify(req.cookies.userToken, "krishna_1999#2022@", (err, data) => {
+        jwt.verify(req.cookies.userToken, "krishna-23051998@#1!4959", (err, data) => {
             req.user = data
             next()
         })

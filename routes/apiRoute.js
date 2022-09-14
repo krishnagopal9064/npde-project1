@@ -6,5 +6,6 @@ const userAuth = require('../middleware/userAuth')
 Route.get('/', apiController.index)
 Route.post('/register', [userAuth.checkDuplicateEntries], apiController.register)
 Route.post('/login', apiController.login)
+Route.get('/logout', apiController.logout)
 
 module.exports = Route;

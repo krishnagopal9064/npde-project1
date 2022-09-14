@@ -47,15 +47,11 @@ exports.login = (req, res) => {
     if (data) {
       const hashpassword = data.password;
       if (bcrypt.compareSync(req.body.password, hashpassword)) {
-        const userToken = jwt.sign(
-          {
-            id: data._id,
-            name: data.name,
-          },
-          "krishna_1999#2022@",
-          { expiresIn: "10m" }
-        );
-        res.cookie("userToken", userToken);
+        const token = jwt.sign({
+          id: data._id,
+          username: data.userName
+      }, "krishna-23051998@#1!4959", { expiresIn: '1m' });
+      res.cookie("userToken", token);
         if (req.body.rememberme) {
           res.cookie("email", req.body.email);
           res.cookie("password", req.body.password);
@@ -80,3 +76,11 @@ exports.login = (req, res) => {
     }
   });
 };
+
+exports.logout = (req, res) => {
+  res.clearCookie("userToken");
+  res.status(200).json({
+      status: 'success',
+      message: "Logout Successfully"
+  })
+}
