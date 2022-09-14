@@ -49,7 +49,7 @@ exports.login = (req, res) => {
       if (bcrypt.compareSync(req.body.password, hashpassword)) {
         const token = jwt.sign({
           id: data._id,
-          username: data.userName
+          name: data.name
       }, "krishna-23051998@#1!4959", { expiresIn: '1m' });
       res.cookie("userToken", token);
         if (req.body.rememberme) {
@@ -60,7 +60,8 @@ exports.login = (req, res) => {
         res.status(200).json({
           status: "success",
           result: data,
-          message: "Login....",
+          token:token,
+          message: "Login...."
         });
       } else {
         res.status(404).json({
