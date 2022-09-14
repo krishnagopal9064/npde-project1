@@ -1,6 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const UserModel = require("../model/apiUserModel");
+const TokenModel=require('../model/token')
 const jwt = require("jsonwebtoken");
 
 exports.index=(req,res)=>{

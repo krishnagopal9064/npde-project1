@@ -13,12 +13,6 @@ app.use(express.urlencoded({
 }));
 
 app.use(userAuth.authJwt)
-// app.use((req,res,next)=>{
-//     res.setHeader('Access-Control-Allow-Origin', '*')
-//     res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE')
-//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-//     next()
-// })
 
 const apiRoute=require('./routes/apiRoute')
 app.use(apiRoute)
